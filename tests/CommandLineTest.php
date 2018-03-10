@@ -26,7 +26,7 @@ class CommandLineTest extends TestCase
 
         $result = Artisan::output();
 
-        $this->assertEquals($result, '-1');
+        $this->assertEquals($result, '4');
     }
 
 
