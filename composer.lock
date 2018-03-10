@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "55e0189572197de0b563540cd8aae6d3",
-    "content-hash": "5bd58fd976f1ee3e9611bc37c006ec46",
+    "hash": "655256d65e2f294597c53f6e7b39c947",
+    "content-hash": "cddc41ca5ce98a531ac29a41f14daab3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -361,6 +361,57 @@
                 "tokenizer"
             ],
             "time": "2016-12-07 09:37:55"
+        },
+        {
+            "name": "konstmal/separator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/konstmal/separator.git",
+                "reference": "4d5a564dd4e3432f85422a761e91250deeb0383d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/konstmal/separator/zipball/4d5a564dd4e3432f85422a761e91250deeb0383d",
+                "reference": "4d5a564dd4e3432f85422a761e91250deeb0383d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Konstmal\\Separator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantin Malinin",
+                    "email": "konstmal@gmail.com",
+                    "homepage": "http://konstmal.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The PHP class to separate an array by rule",
+            "homepage": "https://github.com/konstmal/separator",
+            "keywords": [
+                "array",
+                "separate"
+            ],
+            "time": "2018-03-10 07:38:56"
         },
         {
             "name": "laravel/framework",
@@ -3354,7 +3405,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "konstmal/separator": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
