@@ -14,6 +14,15 @@ class Task extends Model
     protected $fillable = ['number', 'input', 'output'];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'input' => 'array',
+    ];
+
+    /**
      * User, who create this task
      */
     public function user()
