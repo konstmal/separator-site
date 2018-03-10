@@ -46,7 +46,7 @@ class TaskController extends Controller
             'number' => 'required',
             'array' => 'required',
             'email' => 'required',
-            'token' => 'required'
+            'secret' => 'required'
         ];
 
         $v = Validator::make($request->all(), $val);
@@ -61,12 +61,16 @@ class TaskController extends Controller
             return response()->json(['User not found'], 400);
         }
 
-        if ($user->token != $request->input('token')) {
+        $number = $request->input('number');
+        $array = $request->input('array');
+
+        //Calculate and validate the secret (hash of all input fields and user token)
+        $secret = sha1($user->token.$number.implode(',', $array).$user->email);
+
+        if ($secret != $request->input('secret')) {
             return response()->json(['Access denied'], 403);
         }
 
-        $number = $request->input('number');
-        $array = $request->input('array');
         $result = Separator::separate($array, $number);
 
         $user->tasks()->create([

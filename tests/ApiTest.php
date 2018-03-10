@@ -13,7 +13,7 @@ class ApiTest extends TestCase
                 'number' => ['The number field is required.'],
                 'array' => ['The array field is required.'],
                 'email' => ['The email field is required.'],
-                'token' => ['The token field is required.'],
+                'secret' => ['The secret field is required.'],
             ])->assertResponseStatus(400);
     }
 
@@ -23,7 +23,7 @@ class ApiTest extends TestCase
             'number' => 1,
             'array' => [1],
             'email' => 'invalid@example.com',
-            'token' => 'invalid'
+            'secret' => 'invalid'
         ];
 
         $this->json('POST', 'tasks', $input)
@@ -40,7 +40,7 @@ class ApiTest extends TestCase
             'number' => 1,
             'array' => [1],
             'email' => $user->email,
-            'token' => 'invalid'
+            'secret' => 'invalid'
         ];
 
         $this->json('POST', 'tasks', $input)
@@ -56,11 +56,18 @@ class ApiTest extends TestCase
 
         $tasks_count = $user->tasks()->count();
 
+        $number = 5;
+        $array = [5, 5, 1, 7, 2, 3, 5];
+        $email = $user->email;
+
+        //Making a secret by hash of all input fields and user token
+        $secret = sha1($user->token.$number.implode(',', $array).$email);
+
         $input = [
-            'number' => 5,
-            'array' => [5, 5, 1, 7, 2, 3, 5],
-            'email' => $user->email,
-            'token' => $user->token
+            'number' => $number,
+            'array' => $array,
+            'email' => $email,
+            'secret' => $secret
         ];
 
 
